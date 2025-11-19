@@ -8,7 +8,14 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: [
+    "https://travell-form-frontend.vercel.app",
+    "http://localhost:3000"
+  ],
+  methods: ["GET", "POST", "DELETE"],
+}));
+
 app.use(express.json());
 
 // Serve uploaded images
