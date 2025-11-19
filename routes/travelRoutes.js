@@ -47,16 +47,16 @@ router.get("/", async (req, res) => {
 // ADD TRAVEL ENTRY
 router.post("/add", upload.single("slipImage"), async (req, res) => {
   try {
-    const { fromLocation, toLocation, amount, date } = req.body;
+    const { fromLocation, toLocation, amount, date, siteVisited } = req.body;
 
     const newLog = await TravelLog.create({
-      fromLocation,
-      toLocation,
-      amount: Number(amount),
-      date: new Date(date),
-      slipImageUrl: `/uploads/${req.file.filename}`,
-    });
-
+  fromLocation,
+  toLocation,
+  amount: Number(amount),
+  date,
+  siteVisited,      // <-- NEW FIELD
+  slipImageUrl: `/uploads/${req.file.filename}`,
+});
     res.json({ success: true, data: newLog });
 
   } catch (error) {

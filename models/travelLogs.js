@@ -5,7 +5,8 @@ const travelLogSchema = new mongoose.Schema(
     fromLocation: String,
     toLocation: String,
     amount: Number,
-    date: { type: Date, required: true },
+    date: Date,
+    siteVisited: String, // <-- NEW FIELD
     slipImageUrl: String,
   },
   { timestamps: true }
